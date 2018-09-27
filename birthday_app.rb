@@ -7,10 +7,12 @@ class Birthday < Sinatra::Base
     erb(:index)
   end
 
-  get '/birthday' do
-    @name = params[:birthday]
+  post '/birthday' do
+    @birthday = params[:birthday]
     @name = params[:name]
+    @today = Date.today.strftime('%Y-%m-%d')
     erb(:birthday)
+
   end
 
   run! if app_file == $0
